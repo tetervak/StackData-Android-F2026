@@ -3,13 +3,16 @@ package ca.tetervak.stackdata.ui.stack
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ca.tetervak.stackdata.repository.StackItemRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class StackViewModel(
+@HiltViewModel
+class StackViewModel @Inject constructor(
     private val repository: StackItemRepository
 ): ViewModel() {
 

@@ -2,10 +2,13 @@ package ca.tetervak.stackdata.repository
 
 import ca.tetervak.stackdata.data.ItemDao
 import ca.tetervak.stackdata.domain.StackEntry
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Singleton
 
-class StackItemRepository(
+@Singleton
+class StackItemRepository @Inject constructor(
     private val itemDao: ItemDao
 ){
 
