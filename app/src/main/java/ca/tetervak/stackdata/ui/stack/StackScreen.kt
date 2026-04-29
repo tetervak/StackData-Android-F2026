@@ -51,18 +51,17 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import ca.tetervak.stackdata.R
 import ca.tetervak.stackdata.domain.StackEntry
-import ca.tetervak.stackdata.di.AppViewModelProvider
 import ca.tetervak.stackdata.ui.common.StackDataTopBar
 import ca.tetervak.stackdata.ui.theme.StackDataTheme
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StackScreen(
     modifier: Modifier = Modifier,
-    viewModel: StackViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: StackViewModel = koinViewModel(),
     onHelpButtonClick: () -> Unit = {}
 ){
     val state: State<StackUiState> = viewModel.stackUiState.collectAsState()
