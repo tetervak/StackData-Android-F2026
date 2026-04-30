@@ -42,5 +42,4 @@ koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-androidx-room = { id = "androidx.room", version.ref = "room" }
 devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
