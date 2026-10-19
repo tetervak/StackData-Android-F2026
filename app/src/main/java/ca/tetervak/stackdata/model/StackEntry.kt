@@ -1,4 +1,4 @@
-package ca.tetervak.stackdata.domain
+package ca.tetervak.stackdata.model
 
 data class StackEntry(
     val count: Int, // count from the bottom of the stack

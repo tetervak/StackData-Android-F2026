@@ -1,11 +1,15 @@
 package ca.tetervak.stackdata.di
 
 import androidx.room.Room
+import ca.tetervak.stackdata.data.ItemDao
 import ca.tetervak.stackdata.data.ItemDatabase
-import ca.tetervak.stackdata.repository.StackItemRepository
+import ca.tetervak.stackdata.data.RoomStackItemRepository
+import ca.tetervak.stackdata.data.StackItemRepository
 import ca.tetervak.stackdata.ui.stack.StackViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.module.dsl.viewModel
+import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 
@@ -16,9 +20,9 @@ val dataModule = module {
             .build()
     }
 
-    single { get<ItemDatabase>().itemDao }
+    single<ItemDao> { get<ItemDatabase>().itemDao }
 
-    single { StackItemRepository(get()) }
+    singleOf(::RoomStackItemRepository) bind StackItemRepository::class
 
-    viewModel { StackViewModel(get()) }
+    viewModelOf(::StackViewModel)
 }
