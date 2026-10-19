@@ -1,7 +1,6 @@
-package ca.tetervak.stackdata.repository
+package ca.tetervak.stackdata.data
 
-import ca.tetervak.stackdata.data.ItemDao
-import ca.tetervak.stackdata.domain.StackEntry
+import ca.tetervak.stackdata.model.StackEntry
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -2,12 +2,15 @@ package ca.tetervak.stackdata.ui.stack
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ca.tetervak.stackdata.repository.StackItemRepository
+import ca.tetervak.stackdata.model.StackEntry
+import ca.tetervak.stackdata.data.StackItemRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+
+data class StackUiState(val items: List<StackEntry> = emptyList())
 
 class StackViewModel(
     private val repository: StackItemRepository
@@ -32,3 +35,4 @@ class StackViewModel(
         repository.push(value)
     }
 }
+

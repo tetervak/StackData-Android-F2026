@@ -53,7 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ca.tetervak.stackdata.R
-import ca.tetervak.stackdata.domain.StackEntry
+import ca.tetervak.stackdata.model.StackEntry
 import ca.tetervak.stackdata.di.AppViewModelProvider
 import ca.tetervak.stackdata.ui.common.StackDataTopBar
 import ca.tetervak.stackdata.ui.theme.StackDataTheme
