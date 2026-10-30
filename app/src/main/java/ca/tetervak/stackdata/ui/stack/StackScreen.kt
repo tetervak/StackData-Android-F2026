@@ -33,7 +33,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -51,21 +50,21 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ca.tetervak.stackdata.R
 import ca.tetervak.stackdata.model.StackEntry
-import ca.tetervak.stackdata.di.AppViewModelProvider
 import ca.tetervak.stackdata.ui.common.StackDataTopBar
 import ca.tetervak.stackdata.ui.theme.StackDataTheme
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StackScreen(
     modifier: Modifier = Modifier,
-    viewModel: StackViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: StackViewModel = koinViewModel(),
     onHelpButtonClick: () -> Unit = {}
 ){
-    val state: State<StackUiState> = viewModel.stackUiState.collectAsState()
+    val state: State<StackUiState> = viewModel.stackUiState.collectAsStateWithLifecycle()
     val itemList: List<StackEntry> = state.value.items
 
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
