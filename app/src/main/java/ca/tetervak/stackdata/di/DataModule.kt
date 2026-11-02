@@ -8,21 +8,28 @@ import ca.tetervak.stackdata.data.StackItemRepository
 import ca.tetervak.stackdata.ui.stack.StackViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
+import org.koin.plugin.module.dsl.viewModel
 
-
-val dataModule = module {
-    single {
+val databaseModule = module {
+    single<ItemDatabase> {
         Room.databaseBuilder(androidContext(), ItemDatabase::class.java, "item_database")
             .fallbackToDestructiveMigration(dropAllTables = true)
             .build()
     }
 
     single<ItemDao> { get<ItemDatabase>().itemDao }
-
-    singleOf(::RoomStackItemRepository) bind StackItemRepository::class
-
-    viewModelOf(::StackViewModel)
 }
+
+val repositoryModule = module {
+    single<StackItemRepository>{ RoomStackItemRepository(itemDao = get()) }
+}
+
+val viewModelModule = module {
+    viewModel<StackViewModel> { StackViewModel(repository = get()) }
+}
+
+val appModules = listOf(databaseModule, repositoryModule, viewModelModule)
