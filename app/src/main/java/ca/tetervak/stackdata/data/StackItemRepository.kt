@@ -8,7 +8,7 @@ class StackItemRepository(
     private val itemDao: ItemDao
 ){
 
-    fun getStackItems(): Flow<List<StackEntry>> =
+    fun getStackEntries(): Flow<List<StackEntry>> =
         itemDao.getAllItemsFlow().map { list ->
             list.mapIndexed { index, value ->
                 StackEntry(list.size - index, value)

@@ -17,7 +17,7 @@ class StackViewModel(
 ): ViewModel() {
 
     val stackUiState: StateFlow<StackUiState> =
-        repository.getStackItems().map { StackUiState(items = it) }.stateIn(
+        repository.getStackEntries().map { StackUiState(items = it) }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
             initialValue = StackUiState()
