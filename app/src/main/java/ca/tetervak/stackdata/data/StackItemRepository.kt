@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.map
 
 
 interface StackItemRepository {
-    fun getStackItems(): Flow<List<StackEntry>>
+    fun getStackEntries(): Flow<List<StackEntry>>
 
     suspend fun push(value: String)
 
@@ -17,7 +17,7 @@ class RoomStackItemRepository(
     private val itemDao: ItemDao
 ) : StackItemRepository {
 
-    override fun getStackItems(): Flow<List<StackEntry>> =
+    override fun getStackEntries(): Flow<List<StackEntry>> =
         itemDao.getAllItemsFlow().map { list ->
             list.mapIndexed { index, value ->
                 StackEntry(list.size - index, value)
