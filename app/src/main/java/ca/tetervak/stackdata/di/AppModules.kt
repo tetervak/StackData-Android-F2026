@@ -7,12 +7,8 @@ import ca.tetervak.stackdata.data.RoomStackItemRepository
 import ca.tetervak.stackdata.data.StackItemRepository
 import ca.tetervak.stackdata.ui.stack.StackViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModel
-import org.koin.core.module.dsl.viewModelOf
-import org.koin.dsl.bind
 import org.koin.dsl.module
-import org.koin.plugin.module.dsl.viewModel
 
 val databaseModule = module {
     single<ItemDatabase> {
